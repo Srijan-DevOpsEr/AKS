@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: new-micro-app
+
+spec: 
+  containers:
+    - name: micro-app-container  
+      image: srijansharmadocker/new-micro-app
+      ports:
+        - containerPort: 80
+      # env: 
+      #   - name: CONNECTION_STRING
+      #     value: Driver={ODBC Driver 17 for SQL Server};Server=tcp:b16.database.windows.net,1433;Database=9;Uid=azure;Pwd={Admin@123456};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;

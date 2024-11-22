@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rollingwaladeploy
+  namespace: default
+spec:
+  replicas: 5
+  selector: 
+    matchLabels:
+      env: dev
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: pod-ng
+      labels: 
+        env: dev
+    spec:
+      containers:
+      - image: nginx:mainline-perl
+        name: ng-cont
+        ports:
+        - containerPort: 80  
+
+
+

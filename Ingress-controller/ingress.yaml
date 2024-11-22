@@ -1,0 +1,19 @@
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netflixwala
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules: 
+  - host: ingress.srijansharma.online
+    http: 
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service: 
+            name: internallb
+            port: 
+              number: 9000
+        

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: micro-pod
+spec: 
+  containers: 
+    - name: micro-container
+      image: srijansharmadocker/todo-micro
+
+      ports:
+        - containerPort: 80

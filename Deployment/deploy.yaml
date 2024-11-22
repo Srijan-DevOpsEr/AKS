@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: deploy
+  namespace: default
+spec:
+  replicas: 10
+  selector:
+    matchExpressions: 
+    - key: sri
+      operator: In
+      values:
+      - jan
+  template:
+    metadata: 
+      labels:
+        sri: jan
+    spec:
+      containers:
+      - name: nginx-cont
+        image: nginx:perl
+        ports: 
+        - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: recreatewaladeploy
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      env: prod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        env: prod 
+    spec:
+      containers:
+      - image: nginx
+        name: ng-cont
+        ports:
+        - containerPort: 80    

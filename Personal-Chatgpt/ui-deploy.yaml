@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: chatgpt-deployment
+  labels:
+    webui: chatgpt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      webui: chatgpt
+  template:
+      metadata:
+        labels:
+          webui: chatgpt
+      spec:
+        containers:
+        - image: ghcr.io/open-webui/open-webui:main
+          name: ui-cont
+          ports:
+          - containerPort: 8080
+          env:
+          - name: OLLAMA_BASE_URL
+            value: http://10.0.82.53
+   

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sri-rs
+  namespace: default
+spec:
+  replicas: 2
+  selector: 
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - nginx
+  template: 
+    metadata: 
+      name: nginx-pod
+      namespace: default
+      labels: 
+        app: nginx 
+    spec: 
+      containers:
+      - image: nginx
+        name: ng-cont
+        ports:
+        - containerPort: 80

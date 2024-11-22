@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: ui-backend-deployment
+  labels:
+    app: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+      metadata:
+        labels:
+          app: ollama
+      spec:
+        containers:
+        - image: ollama/ollama:latest
+          name: backend-cont
+          ports:
+          - containerPort: 11434
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                - /bin/sh
+                - -c
+                - "ollama run llama3.2:1b"
+   

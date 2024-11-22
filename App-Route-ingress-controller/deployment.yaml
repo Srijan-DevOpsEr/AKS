@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy 
+spec:
+  selector:
+    matchLabels:
+      app: approute
+  template:
+    metadata:
+      labels:
+        app: approute
+    spec:
+      containers:
+      - name: approute-cont
+        image: devopsinsiders/netflix-clone
+        ports:
+        - containerPort: 80

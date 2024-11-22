@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vol-1
+  namespace: default
+  labels:
+    app: nginx
+spec: 
+  storageClassName: abc
+  accessModes: 
+  - ReadWriteMany
+  azureFile:
+    secretName: sri-secret
+    shareName: random
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Retain  
+
